@@ -130,7 +130,7 @@ public class MainActivity extends BaseSkinActivity {
             }
         }
     }
-
+/*
     private void aliFixBug() {
         File fixFile = new File(Environment.getExternalStorageDirectory(), "fix.apatch");
         if (fixFile.exists()) {
@@ -142,7 +142,7 @@ public class MainActivity extends BaseSkinActivity {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
     @Override
     protected void initView() {
