@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">内涵段子</string>
+    <string name="media_choose_preview">预览</string>
+    <string name="media_choose_ok">确定</string>
+</resources>
