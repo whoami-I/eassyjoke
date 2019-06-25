@@ -2,6 +2,7 @@ package com.baimeng.library.http;
 
 import android.content.Context;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Map;
 public interface EngineCallBack {
     public void onError(Exception e);
 
-    public void onSuccess(String result);
+    public void onSuccess(String result) ;
 
     public void onPreExecute(Context context, Map<String, Object> params);
 

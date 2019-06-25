@@ -12,7 +12,7 @@
     </FrameLayout>
     
     <RadioGroup
-        android:id="@android:id/tabs"
+        android:id="@+id/tabs"
         android:background="@color/title_bar_bg_day"
         android:layout_width="match_parent"
         android:layout_height="50dp"

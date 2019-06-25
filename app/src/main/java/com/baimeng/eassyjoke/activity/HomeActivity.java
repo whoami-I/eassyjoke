@@ -1,6 +1,10 @@
 package com.baimeng.eassyjoke.activity;
 
 import android.app.NativeActivity;
+import android.app.VoiceInteractor;
+import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import android.widget.RadioGroup;
 
 import com.baimeng.eassyjoke.R;
 import com.baimeng.eassyjoke.fragment.FindFragment;
@@ -22,11 +26,11 @@ import static android.R.attr.handle;
 
 public class HomeActivity extends BaseSkinActivity {
 
-    private HomeFragment mHomeFragment ;
-    private FindFragment mFindFragment ;
-    private MessageFragment mMessageFragment ;
-    private NewFragment mNewFragment ;
-    private FragmentManagerHelper mFragmentHelper ;
+    private HomeFragment mHomeFragment;
+    private FindFragment mFindFragment;
+    private MessageFragment mMessageFragment;
+    private NewFragment mNewFragment;
+    private FragmentManagerHelper mFragmentHelper;
 
 
     @Override
@@ -36,14 +40,17 @@ public class HomeActivity extends BaseSkinActivity {
 
     @Override
     protected void initData() {
-        mFragmentHelper = new FragmentManagerHelper(getSupportFragmentManager(),R.id.main_tab_fl);
-        mHomeFragment = new HomeFragment() ;
+        mFragmentHelper = new FragmentManagerHelper(getSupportFragmentManager(), R.id.main_tab_fl);
+        mHomeFragment = new HomeFragment();
         mFragmentHelper.add(mHomeFragment);
     }
 
     @Override
     protected void initView() {
 
+        findViewById(R.id.home_rb).getBackground().setState(
+                new int[]{android.R.attr.state_pressed});
+        //findViewById(R.id.home_rb).setSelected(true);
     }
 
     @Override
@@ -61,33 +68,35 @@ public class HomeActivity extends BaseSkinActivity {
     }
 
     @OnClick(R.id.home_rb)
-    private void homeRbClick(){
-        if(mHomeFragment == null){
-            mHomeFragment = new HomeFragment() ;
+    private void homeRbClick(View v) {
+        if (mHomeFragment == null) {
+            mHomeFragment = new HomeFragment();
         }
         mFragmentHelper.switchFragment(mHomeFragment);
+
+
     }
 
     @OnClick(R.id.find_rb)
-    private void findRbClick(){
-        if(mFindFragment == null){
-            mFindFragment = new FindFragment() ;
+    private void findRbClick(View v) {
+        if (mFindFragment == null) {
+            mFindFragment = new FindFragment();
         }
         mFragmentHelper.switchFragment(mFindFragment);
     }
 
     @OnClick(R.id.new_rb)
-    private void newRbClick(){
-        if(mNewFragment == null){
-            mNewFragment = new NewFragment() ;
+    private void newRbClick(View v) {
+        if (mNewFragment == null) {
+            mNewFragment = new NewFragment();
         }
         mFragmentHelper.switchFragment(mNewFragment);
     }
 
     @OnClick(R.id.message_rb)
-    private void messageRbClick(){
-        if(mMessageFragment == null){
-            mMessageFragment = new MessageFragment() ;
+    private void messageRbClick(View v) {
+        if (mMessageFragment == null) {
+            mMessageFragment = new MessageFragment();
         }
         mFragmentHelper.switchFragment(mMessageFragment);
     }

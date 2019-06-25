@@ -147,14 +147,14 @@ public class OkHttpEngine implements IHttpEngine {
         Log.e("Get请求路径：", finalUrl);
 
         // 1.判断需不需要缓存，然后判断有没有
-        if (isCache) {
+        /*if (isCache) {
             String resultJson = CacheDataUtil.getCacheResultJson(finalUrl);
             if (!TextUtils.isEmpty(resultJson)) {
                 Log.e("TAG", "以读到缓存");
                 // 需要缓存，而且数据库有缓存,直接就去执行，里面执行成功
                 callBack.onSuccess(resultJson);
             }
-        }
+        }*/
 
         Request.Builder requestBuilder = new Request.Builder().url(finalUrl).tag(context);
         //可以省略，默认是GET请求
@@ -176,7 +176,7 @@ public class OkHttpEngine implements IHttpEngine {
                 final String resultJson = response.body().string();
                 Log.i("请求借口成功==========",resultJson);
                 // 获取数据之后会执行成功方法
-                if (isCache) {
+                /*if (isCache) {
                     String cacheResultJson = CacheDataUtil.getCacheResultJson(finalUrl);
                     if (!TextUtils.isEmpty(resultJson)) {
                         // 比对内容
@@ -186,8 +186,12 @@ public class OkHttpEngine implements IHttpEngine {
                             return;
                         }
                     }
-                }
+                }*/
                 // 2.2 执行成功方法
+
+                //由于没网因此需要从sd卡中读取json字符串
+
+
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {

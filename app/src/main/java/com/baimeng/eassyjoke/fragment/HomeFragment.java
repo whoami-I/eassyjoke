@@ -26,19 +26,19 @@ import java.util.List;
 public class HomeFragment extends BaseFragment {
 
     @ViewById(R.id.indicator_view)
-    ColorTrackTextContainer mTopIndicator ;
+    ColorTrackTextContainer mTopIndicator;
     @ViewById(R.id.view_pager)
-    ViewPager mViewPager ;
+    ViewPager mViewPager;
 
-    private String [] items = new String [] {
-            "直播","推荐","视频",
-            "段友秀","图片","段子",
-            "同城","精华","游戏"};
-    private List<ColorTrackTextView> mTopItems ;
+    private String[] items = new String[]{
+            "直播", "推荐", "视频",
+            "段友秀", "图片", "段子",
+            "同城", "精华", "游戏"};
+    private List<ColorTrackTextView> mTopItems;
 
     @Override
     protected void initView() {
-        mTopItems = new ArrayList<>() ;
+        mTopItems = new ArrayList<>();
         initIndicator();
         initViewPager();
     }
@@ -76,12 +76,12 @@ public class HomeFragment extends BaseFragment {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 ColorTrackTextView left = mTopItems.get(position);
                 left.setDirection(ColorTrackTextView.Direction.RIGHT_TO_LEFT);
-                left.setCurrentProgress(1-positionOffset);
+                left.setCurrentProgress(1 - positionOffset);
                 try {
                     ColorTrackTextView right = mTopItems.get(position + 1);
                     right.setDirection(ColorTrackTextView.Direction.LEFT_TO_RIGHT);
                     right.setCurrentProgress(positionOffset);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -116,7 +116,7 @@ public class HomeFragment extends BaseFragment {
                 trackText.setGravity(Gravity.CENTER);
                 trackText.setLayoutParams(params);
                 trackText.setTextColor(Color.BLACK);
-                mTopItems.add(trackText) ;
+                mTopItems.add(trackText);
                 return trackText;
             }
 
@@ -136,11 +136,11 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public View getBottomTrackView() {
-                View view = new View (getActivity());
+                View view = new View(getActivity());
                 view.setBackgroundColor(Color.RED);
-                view.setLayoutParams(new ViewGroup.MarginLayoutParams(88,8));
+                view.setLayoutParams(new ViewGroup.MarginLayoutParams(88, 8));
                 return view;
             }
-        },mViewPager);
+        }, mViewPager);
     }
 }

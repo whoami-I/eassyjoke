@@ -29,7 +29,7 @@ import okhttp3.HttpUrl;
 public class FindFragment extends BaseFragment {
 
     @ViewById(R.id.wrv_find_fragment)
-    WrapperRecyclerView mRecyclerViewFindList ;
+    WrapperRecyclerView mRecyclerViewFindList;
 
     @Override
     protected void initData() {
@@ -46,6 +46,7 @@ public class FindFragment extends BaseFragment {
                     @Override
                     public void onSuccess(DiscoverListResult result) {
                         //LogUtils.e(result.toString());
+                        //LogUtils.e("onSuccess");
                         showListData(result.getData().getCategories().getCategory_list());
                         addBannerView(result.getData().getRotate_banner().getBanners());
                     }
@@ -54,15 +55,15 @@ public class FindFragment extends BaseFragment {
     }
 
     private void addBannerView(final List<DiscoverListResult.DataBean.RotateBannerBean.BannersBean> banners) {
-        if(banners.size() <= 0) return;
+        if (banners.size() <= 0) return;
         BannerView bannerView = (BannerView) LayoutInflater.from(mContext).inflate(R.layout.layout_banner_view, mRecyclerViewFindList, false);
         bannerView.setAdapter(new BannerAdapter() {
             @Override
             public View getView(int positon, View convertview) {
-                if(convertview == null){
-                    convertview = new ImageView(mContext) ;
+                if (convertview == null) {
+                    convertview = new ImageView(mContext);
                 }
-                ((ImageView)convertview).setScaleType(ImageView.ScaleType.CENTER_CROP);
+                ((ImageView) convertview).setScaleType(ImageView.ScaleType.CENTER_CROP);
                 Glide.with(mContext).load(banners.get(positon).getBanner_url().getUrl_list()
                         .get(0).getUrl()).into((ImageView) convertview);
                 return convertview;
@@ -102,6 +103,6 @@ public class FindFragment extends BaseFragment {
     private void showListData(List<DiscoverListResult.DataBean.CategoriesBean.CategoryListBean> list) {
         DiscoveryListAdapter adapter = new DiscoveryListAdapter(list, mContext);
         mRecyclerViewFindList.setAdapter(adapter);
-        mRecyclerViewFindList.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
+        mRecyclerViewFindList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
     }
 }

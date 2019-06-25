@@ -18,7 +18,7 @@ import com.baimeng.framelibrary.skin.SkinResources;
  */
 
 public class WelcomActivity extends Activity {
-    private static final long WAIT_TIME =  3000 ;
+    private static final long WAIT_TIME =  1500 ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
